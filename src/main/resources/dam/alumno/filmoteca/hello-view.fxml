@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="458.0" prefWidth="477.0" spacing="20.0" styleClass="botonPeligroso" stylesheets="@filmoteca.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam.alumno.filmoteca.HelloController">
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+
+  <Label fx:id="welcomeText" />
+   <Button mnemonicParsing="false" styleClass="botonPeligroso" text="Cerrar aplicación" />
+   <ToolBar prefHeight="40.0" prefWidth="200.0">
+     <items>
+       <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="135.0" text="Añadir nueva película" />
+         <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="135.0" text="Modificar película" />
+         <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="135.0" styleClass="botonPeligroso" text="Borrar película" />
+     </items>
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
+   </ToolBar>
+   <TableView prefHeight="278.0" prefWidth="412.0" />
+</VBox>
