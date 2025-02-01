@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="458.0" prefWidth="477.0" spacing="20.0" styleClass="botonPeligroso" stylesheets="@filmoteca.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam.alumno.filmoteca.HelloController">
+<VBox alignment="CENTER" prefHeight="458.0" prefWidth="609.0" spacing="20.0" styleClass="botonPeligroso" stylesheets="@filmoteca.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam.alumno.filmoteca.HelloController">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
@@ -22,10 +22,17 @@
        </Menu>
      </menus>
    </MenuBar>
-   <TextFlow lineSpacing="1.5" prefHeight="202.0" prefWidth="438.0" />
+   <TextFlow lineSpacing="1.5" prefHeight="202.0" prefWidth="438.0" textAlignment="CENTER" />
 
 
-   <TableView prefHeight="278.0" prefWidth="412.0" />
+    <TableView prefHeight="229.0" prefWidth="526.0">
+        <columns>
+            <TableColumn prefWidth="312.00002098083496" text="Título" />
+            <TableColumn prefWidth="75.20001220703125" text="Año" />
+            <TableColumn prefWidth="114.19998168945312" text="Valoración" />
+            <TableColumn minWidth="0.0" prefWidth="68.0" text="ID" />
+        </columns>
+    </TableView>
 
   <Label fx:id="welcomeText" />
 </VBox>

@@ -21,7 +21,7 @@ public class MainApp extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Hello!");
         stage.setMinHeight(600);
-        stage.setMinWidth(480);
+        stage.setMinWidth(628);
         stage.setScene(scene);
         stage.setResizable(false);
 
