@@ -38,17 +38,14 @@ public class MainApp extends Application {
         DatosFilmoteca datosFilmoteca = DatosFilmoteca.getInstancia();
         loadMovies();
 
-
-        System.out.println(datosFilmoteca.getListaPeliculas());
     }
 
     public void stop() {
         ObservableList<Pelicula> listaPeliculas = DatosFilmoteca.getInstancia().getListaPeliculas();
-       // System.out.println(listaPeliculas);
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
-            objectMapper.writeValue(new File("datos/peliculas2.json"),listaPeliculas);
+            objectMapper.writeValue(new File("datos/peliculas.json"),listaPeliculas);
         }catch (IOException e) {
             System.out.println("ERROR no se ha podido guardar los datos de la aplicación");
             e.printStackTrace();

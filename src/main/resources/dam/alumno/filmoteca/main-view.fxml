@@ -8,13 +8,13 @@
 <VBox alignment="CENTER" prefHeight="458.0" prefWidth="609.0" spacing="20.0" styleClass="ventana" stylesheets="@filmoteca.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam.alumno.filmoteca.FilmotecaController">
    <HBox prefHeight="100.0" prefWidth="200.0">
       <children>
-         <MenuBar prefHeight="37.0" prefWidth="100.0">
+         <MenuBar prefHeight="38.0" prefWidth="142.0">
            <menus>
-             <Menu mnemonicParsing="false" text="Opciones" >
+             <Menu mnemonicParsing="false" text="Opciones">
                <items>
-                 <MenuItem fx:id="opcionNueva" mnemonicParsing="false" text="Añadir película" onAction="#addMovie"/>
-                   <MenuItem fx:id="opcionModificar" mnemonicParsing="false" text="Modificar película" onAction="#editMovie"/>
-                   <MenuItem fx:id="opcionEliminar" mnemonicParsing="false" text="Eliminar película" onAction="#removeDialog"/>
+                 <MenuItem fx:id="opcionNueva" mnemonicParsing="false" onAction="#addMovie" text="Añadir película" />
+                   <MenuItem fx:id="opcionModificar" mnemonicParsing="false" onAction="#editMovie" text="Modificar película" />
+                   <MenuItem fx:id="opcionEliminar" mnemonicParsing="false" onAction="#removeDialog" text="Eliminar película" />
                    <MenuItem fx:id="opcionCerrar" mnemonicParsing="false" onAction="#quitDialog" text="Cerrar Aplicación" />
                  </items>
              </Menu>
@@ -22,21 +22,22 @@
 
            </menus>
          </MenuBar>
-         <Pane prefHeight="50.0" prefWidth="225.0" />
-         <MenuBar prefHeight="37.0" prefWidth="278.0">
+         <MenuBar prefHeight="38.0" prefWidth="328.0">
             <menus>
                <Menu mnemonicParsing="false" text="Búsqueda -&gt;">
                </Menu>
                <Menu mnemonicParsing="false">
-                 <items>
-                   <MenuItem mnemonicParsing="false" text="Action 1" />
-                 </items>
+
                   <graphic>
-                     <TextField />
+                     <TextField fx:id="searchBar" />
                   </graphic>
                </Menu>
             </menus>
          </MenuBar>
+         <Pane prefHeight="13.0" prefWidth="153.0">
+            <children>
+               <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="134.0" text="Borrar filtro" onMouseClicked="#clearSearch"/>
+            </children></Pane>
       </children>
    </HBox>
 
@@ -51,7 +52,7 @@
     </TableView>
    <HBox fx:id="infoBox" prefHeight="200.0" prefWidth="100.0">
       <children>
-         <TextFlow prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+         <TextFlow prefHeight="200.0" prefWidth="200.0" textAlignment="CENTER" HBox.hgrow="ALWAYS">
             <children>
                <Text fx:id="info" lineSpacing="1.5" text="¡Bienvenido! Selecciona una película para ver sus datos" textAlignment="CENTER" />
 

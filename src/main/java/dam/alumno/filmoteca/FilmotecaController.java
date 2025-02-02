@@ -1,11 +1,14 @@
 package dam.alumno.filmoteca;
 
 import dam.alumno.filmoteca.dialogs.Dialogs;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
@@ -25,6 +28,8 @@ public class FilmotecaController {
     private TableColumn<Pelicula, String> id;
     @FXML
     private TableColumn<Pelicula, String> rating;
+    @FXML
+    private TextField searchBar;
 
 
     @FXML
@@ -41,6 +46,7 @@ public class FilmotecaController {
                     }
                 }
         );
+        searchConfig();
 
 
 
@@ -95,5 +101,25 @@ public class FilmotecaController {
         }
     }
 
+    @FXML
+    public void searchConfig(){
+        searchBar.setPromptText("Título de la película");
+        FilteredList<Pelicula> filteredData = new FilteredList<>(DatosFilmoteca.getListaPeliculas(), p -> true);
 
+        searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(movie -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                return movie.getTitle().toLowerCase().contains(newValue.toLowerCase());
+            });
+        });
+        table.setItems(filteredData);
+
+    }
+    @FXML
+    public void clearSearch(MouseEvent mouseEvent) {
+        searchBar.clear();
+    }
 }
