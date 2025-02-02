@@ -20,9 +20,9 @@ public class MainApp extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        stage.setTitle("Filmoteca");
         stage.setMinHeight(600);
-        stage.setMinWidth(628);
+        stage.setMinWidth(650);
         stage.setScene(scene);
         stage.setResizable(false);
 

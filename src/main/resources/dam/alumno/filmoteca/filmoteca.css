@@ -1,15 +1,6 @@
-tableView{
---body-background-color: black;
-}
-.menu{
 
-}
-.descripcion{
-
-}
 .ventana{
-
-}
-.dialog{
-    font-size: 50pt;
+    -fx-background-color: rgb(156, 150, 143);
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(three-pass-box, black, 2, 0.0, 1, 1);
 }

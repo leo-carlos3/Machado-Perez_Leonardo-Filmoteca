@@ -10,11 +10,11 @@
       <children>
          <MenuBar prefHeight="37.0" prefWidth="100.0">
            <menus>
-             <Menu mnemonicParsing="false" text="Opciones">
+             <Menu mnemonicParsing="false" text="Opciones" >
                <items>
-                 <MenuItem fx:id="opcionNueva" mnemonicParsing="false" text="Añadir película" />
-                   <MenuItem fx:id="opcionModificar" mnemonicParsing="false" text="Modificar película" />
-                   <MenuItem fx:id="opcionEliminar" mnemonicParsing="false" text="Eliminar película" />
+                 <MenuItem fx:id="opcionNueva" mnemonicParsing="false" text="Añadir película" onAction="#addMovie"/>
+                   <MenuItem fx:id="opcionModificar" mnemonicParsing="false" text="Modificar película" onAction="#editMovie"/>
+                   <MenuItem fx:id="opcionEliminar" mnemonicParsing="false" text="Eliminar película" onAction="#removeDialog"/>
                    <MenuItem fx:id="opcionCerrar" mnemonicParsing="false" onAction="#quitDialog" text="Cerrar Aplicación" />
                  </items>
              </Menu>

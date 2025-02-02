@@ -1,5 +1,6 @@
 package dam.alumno.filmoteca;
 
+import dam.alumno.filmoteca.dialogs.Dialogs;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -89,36 +90,32 @@ public class FilmotecaController {
     }
     @FXML
     public void quitDialog() {
-       openQuitDialog();
+       Dialogs.quitDialog();
     }
-    //no carga el fxml y no he conseguido arreglarlo, así que he hecho apaños
-    //porque no me carga ningún otro fxml tampoco, solo el main
-    public void openQuitDialog() {
-        Stage quit =new Stage();
-        Scene scene;
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getResource("quit-view.fxml"));
-            //System.out.println(fxmlLoader.getLocation());
-            scene = new Scene(fxmlLoader.load(), 320, 240);
-
-        } catch (IOException e) {
-            System.err.println(e);
-            VBox root=new VBox();
-            root.getChildren().add(new Text("¿Estás seguro de que quieres cerrar la aplicación?"));
-            HBox buttons=new HBox();
-            Button exit=new Button("Cerrar");
-            exit.setOnMouseClicked(event -> {System.exit(0);});
-            buttons.getChildren().add(exit);
-            Button cancel=new Button("Cancelar");
-            cancel.setOnMouseClicked(event -> {quit.close();});
-            buttons.getChildren().add(cancel);
-            root.getChildren().add(buttons);
-            scene=new Scene(root, 320, 240);
+    @FXML
+    public void removeDialog() {
+        if (table.getSelectionModel().getSelectedItem() != null)
+        {
+            Dialogs.removeDialog(table.getSelectionModel().getSelectedItem().getId());
         }
-
-        quit.initModality(Modality.APPLICATION_MODAL);
-        quit.setScene(scene);
-        quit.setTitle("¿Cerrar aplicación?");
-        quit.show();
+        else{
+            Dialogs.noMovieSelected();
+        }
     }
+    @FXML
+    public void addMovie(){
+        Dialogs.addMovie();
+    }
+    @FXML
+    public void editMovie(){
+        if (table.getSelectionModel().getSelectedItem() != null)
+        {
+            Dialogs.editMovie(table.getSelectionModel().getSelectedItem());
+        }
+        else {
+            Dialogs.noMovieSelected();
+        }
+    }
+
+
 }
