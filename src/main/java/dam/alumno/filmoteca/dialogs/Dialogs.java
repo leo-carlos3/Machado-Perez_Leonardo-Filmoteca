@@ -2,7 +2,6 @@ package dam.alumno.filmoteca.dialogs;
 
 import dam.alumno.filmoteca.DatosFilmoteca;
 import dam.alumno.filmoteca.Pelicula;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -10,17 +9,10 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.converter.IntegerStringConverter;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
 
 public class Dialogs {
     public static void quitDialog(){
@@ -50,7 +42,10 @@ public class Dialogs {
          VBox root=new VBox();
          root.setPadding(new Insets(20));
          root.setSpacing(10);
-         Text id=new Text(DatosFilmoteca.getListaPeliculas().size()+"");
+         //podría calcular ya el id sin ocuparlo pero no estoy seguro de si
+        //eso cumple "Se asigna id a una película solo si se inserta a la lista"
+        //así que por si acaso lo dejo así
+         Text id=new Text("No asignado");
          TextField title=new TextField();
          title.setPromptText("Titulo de la película");
         TextField year=new TextField();
@@ -86,19 +81,21 @@ public class Dialogs {
                     description.getText().isEmpty()||url.getText().isEmpty())
             {return;}
             //comprueba que haya valores en todos los campos
+            //y controla que se dé un int para el año
             int release=2025;
             try {
                 release = Integer.parseInt(year.getText());
             }catch (Exception e){
                 System.err.println("Año no válido");
             }
+            final int releaseYear=release;
             alert.showAndWait().filter(response -> response == ButtonType.OK)
                     .ifPresent(response -> {
                         Pelicula movie=new Pelicula();
                         movie.setId(DatosFilmoteca.getListaPeliculas().size());
                         movie.setTitle(title.getText());
                         movie.setDescription(description.getText());
-                        movie.setYear(Integer.parseInt(year.getText()));
+                        movie.setYear(releaseYear);
                         movie.setRating((float) rating.getValue());
                         DatosFilmoteca.getListaPeliculas().add(movie);
                         add.close();
@@ -112,6 +109,9 @@ public class Dialogs {
         add.setScene(scene);
         add.show();
     }
+    //para modificar una película
+    //es casi idéntico al addMovie, salvo porque necesita un objeto movie que usa para
+    //dar su valor inicial a los campos
     public static void editMovie(Pelicula movie){
         Stage edit=new Stage();
         VBox root=new VBox();

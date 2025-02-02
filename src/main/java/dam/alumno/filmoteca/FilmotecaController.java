@@ -1,30 +1,16 @@
 package dam.alumno.filmoteca;
 
 import dam.alumno.filmoteca.dialogs.Dialogs;
-import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 
 public class FilmotecaController {
-   // private static ObservableList<Pelicula> filmoteca=DatosFilmoteca.getListaPeliculas();
-    @FXML
-    private Label welcomeText;
     @FXML
     private HBox infoBox;
     @FXML
@@ -40,14 +26,6 @@ public class FilmotecaController {
     @FXML
     private TableColumn<Pelicula, String> rating;
 
-
-
-
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
 
     @FXML
     public void initialize() {
