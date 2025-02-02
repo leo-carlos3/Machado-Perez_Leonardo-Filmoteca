@@ -2,6 +2,7 @@ package dam.alumno.filmoteca;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -34,9 +35,10 @@ public class MainApp extends Application {
     }
 
     public void init() {
-        System.out.println("Cargando datos desde fichero datos/peliculas.json");
+        //System.out.println("Cargando datos desde fichero datos/peliculas.json");
         DatosFilmoteca datosFilmoteca = DatosFilmoteca.getInstancia();
         loadMovies();
+        Platform.setImplicitExit(true);
 
     }
 

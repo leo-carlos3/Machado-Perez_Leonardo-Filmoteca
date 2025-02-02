@@ -1,7 +1,10 @@
 package dam.alumno.filmoteca.dialogs;
 
 import dam.alumno.filmoteca.DatosFilmoteca;
+import dam.alumno.filmoteca.MainApp;
 import dam.alumno.filmoteca.Pelicula;
+import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,6 +17,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.File;
+
 public class Dialogs {
     public static void quitDialog(){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -21,7 +26,7 @@ public class Dialogs {
         alert.setHeaderText("Si sales, luego podrás volver a iniciar la aplicación.");
         alert.showAndWait()
                 .filter(response -> response == ButtonType.OK)
-                .ifPresent(response -> System.exit(0));
+                .ifPresent(response -> Platform.exit());
     }
     public static void removeDialog(int id){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -45,7 +50,7 @@ public class Dialogs {
          //podría calcular ya el id sin ocuparlo pero no estoy seguro de si
         //eso cumple "Se asigna id a una película solo si se inserta a la lista"
         //así que por si acaso lo dejo así
-         Text id=new Text("No asignado");
+         Text id=new Text("ID no asignado");
          TextField title=new TextField();
          title.setPromptText("Titulo de la película");
         TextField year=new TextField();
@@ -60,6 +65,8 @@ public class Dialogs {
         ImageView image=new ImageView();
         image.setPreserveRatio(true);
         image.setFitHeight(200);
+        File img=new File("movie.jpg");
+        final Image placeholder=new Image(img.toURI().toString());
         url.setOnKeyReleased(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 try
@@ -67,7 +74,8 @@ public class Dialogs {
                     image.setImage(new Image(url.getText()));
                 }
                 catch (Exception e){
-                    image.setImage(null);
+                    image.setImage(placeholder);
+
                 }
 
             }
@@ -92,11 +100,12 @@ public class Dialogs {
             alert.showAndWait().filter(response -> response == ButtonType.OK)
                     .ifPresent(response -> {
                         Pelicula movie=new Pelicula();
-                        movie.setId(DatosFilmoteca.getListaPeliculas().size());
+                        movie.setId(DatosFilmoteca.getListaPeliculas().getLast().getId()+1);
                         movie.setTitle(title.getText());
                         movie.setDescription(description.getText());
                         movie.setYear(releaseYear);
                         movie.setRating((float) rating.getValue());
+                        movie.setPoster(image.getImage().getUrl());
                         DatosFilmoteca.getListaPeliculas().add(movie);
                         add.close();
                     });
@@ -104,7 +113,7 @@ public class Dialogs {
         });
         root.getChildren().addAll(id,title,year,description,rating,url, image, confirmar);
         root.setAlignment(Pos.CENTER);
-        Scene scene=new Scene(root);
+        Scene scene=new Scene(root, 400, 500);
         add.initModality(Modality.APPLICATION_MODAL);
         add.setScene(scene);
         add.show();
@@ -117,7 +126,7 @@ public class Dialogs {
         VBox root=new VBox();
         root.setPadding(new Insets(20));
         root.setSpacing(10);
-        Text id=new Text(movie.getId()+"");
+        Text id=new Text("ID: "+movie.getId());
         TextField title=new TextField();
         title.setPromptText("Titulo de la película");
         title.setText(movie.getTitle());
@@ -135,12 +144,14 @@ public class Dialogs {
         url.setPromptText("URL de la carátula");
         url.setText(movie.getPoster());
         ImageView image=new ImageView();
+        File img=new File("movie.jpg");
+        final Image placeholder=new Image(img.toURI().toString());
         try
         {
             image.setImage(new Image(movie.getPoster()));
         }
         catch (Exception e){
-            image.setImage(null);
+            image.setImage(placeholder);
         }
         image.setPreserveRatio(true);
         image.setFitHeight(200);
@@ -151,7 +162,7 @@ public class Dialogs {
                     image.setImage(new Image(url.getText()));
                 }
                 catch (Exception e){
-                    image.setImage(null);
+                    image.setImage(placeholder);
                 }
 
             }
@@ -173,6 +184,7 @@ public class Dialogs {
                         movie.setDescription(description.getText());
                         movie.setYear(Integer.parseInt(year.getText()));
                         movie.setRating((float) rating.getValue());
+                        movie.setPoster(image.getImage().getUrl());
                         DatosFilmoteca.getListaPeliculas().remove(movie);
                         DatosFilmoteca.getListaPeliculas().add(movie);
                         edit.close();
@@ -181,7 +193,7 @@ public class Dialogs {
         });
         root.getChildren().addAll(id,title,year,description,rating,url, image, confirmar);
         root.setAlignment(Pos.CENTER);
-        Scene scene=new Scene(root);
+        Scene scene=new Scene(root, 400, 600);
         edit.initModality(Modality.APPLICATION_MODAL);
         edit.setScene(scene);
         edit.show();
