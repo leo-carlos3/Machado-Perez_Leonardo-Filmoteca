@@ -35,25 +35,15 @@ public class MainApp extends Application {
     public void init() {
         System.out.println("Cargando datos desde fichero datos/peliculas.json");
         DatosFilmoteca datosFilmoteca = DatosFilmoteca.getInstancia();
-        ObjectMapper objectMapper = new ObjectMapper();
+        loadMovies();
 
-        try {
-            List<Pelicula> lista = objectMapper.readValue(new File("datos/peliculas.json"),
-                                    objectMapper.getTypeFactory().constructCollectionType(List.class, Pelicula.class));
-
-            datosFilmoteca.getListaPeliculas().setAll(lista);
-        } catch (IOException e){
-            System.out.println("ERROR al cargar los datos. La aplicación no puede iniciarse");
-            e.printStackTrace();
-            System.exit(1);
-        }
 
         System.out.println(datosFilmoteca.getListaPeliculas());
     }
 
     public void stop() {
         ObservableList<Pelicula> listaPeliculas = DatosFilmoteca.getInstancia().getListaPeliculas();
-        System.out.println(listaPeliculas);
+       // System.out.println(listaPeliculas);
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
@@ -61,6 +51,20 @@ public class MainApp extends Application {
         }catch (IOException e) {
             System.out.println("ERROR no se ha podido guardar los datos de la aplicación");
             e.printStackTrace();
+        }
+
+    }
+    public void loadMovies(){
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            List<Pelicula> lista = mapper.readValue(new File("datos/peliculas.json"),
+                    mapper.getTypeFactory().constructCollectionType(List.class, Pelicula.class));
+
+            DatosFilmoteca.getListaPeliculas().setAll(lista);
+        } catch (IOException e){
+            System.err.println("ERROR al cargar los datos. La aplicación no puede iniciarse");
+            e.printStackTrace();
+            System.exit(1);
         }
 
     }
