@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@filmoteca.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="dam.alumno.filmoteca.FilmotecaController">
+   <children>
+      <Text layoutX="193.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="dialog" text="¿Seguro que quieres salir?" wrappingWidth="213.22265625" />
+      <Button layoutX="99.0" layoutY="152.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="144.0" text="Cerrar aplicación" />
+      <Button layoutX="321.0" layoutY="152.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="144.0" text="Cancelar" />
+   </children>
+</AnchorPane>

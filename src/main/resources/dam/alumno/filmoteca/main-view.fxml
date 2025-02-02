@@ -6,19 +6,39 @@
 <?import javafx.scene.text.*?>
 
 <VBox alignment="CENTER" prefHeight="458.0" prefWidth="609.0" spacing="20.0" styleClass="ventana" stylesheets="@filmoteca.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dam.alumno.filmoteca.FilmotecaController">
-   <MenuBar>
-     <menus>
-       <Menu mnemonicParsing="false" text="Opciones">
-         <items>
-           <MenuItem id="opcionNueva" mnemonicParsing="false" text="Añadir película" />
-             <MenuItem id="opcionModificar" mnemonicParsing="false" text="Modificar película" />
-             <MenuItem id="opcionEliminar" mnemonicParsing="false" text="Eliminar película" />
-             <MenuItem id="opcionCerrar" mnemonicParsing="false" text="Cerrar Aplicación" />
-           </items>
+   <HBox prefHeight="100.0" prefWidth="200.0">
+      <children>
+         <MenuBar prefHeight="37.0" prefWidth="100.0">
+           <menus>
+             <Menu mnemonicParsing="false" text="Opciones">
+               <items>
+                 <MenuItem fx:id="opcionNueva" mnemonicParsing="false" text="Añadir película" />
+                   <MenuItem fx:id="opcionModificar" mnemonicParsing="false" text="Modificar película" />
+                   <MenuItem fx:id="opcionEliminar" mnemonicParsing="false" text="Eliminar película" />
+                   <MenuItem fx:id="opcionCerrar" mnemonicParsing="false" onAction="#quitDialog" text="Cerrar Aplicación" />
+                 </items>
+             </Menu>
+      
 
-       </Menu>
-     </menus>
-   </MenuBar>
+           </menus>
+         </MenuBar>
+         <Pane prefHeight="50.0" prefWidth="225.0" />
+         <MenuBar prefHeight="37.0" prefWidth="278.0">
+            <menus>
+               <Menu mnemonicParsing="false" text="Búsqueda -&gt;">
+               </Menu>
+               <Menu mnemonicParsing="false">
+                 <items>
+                   <MenuItem mnemonicParsing="false" text="Action 1" />
+                 </items>
+                  <graphic>
+                     <TextField />
+                  </graphic>
+               </Menu>
+            </menus>
+         </MenuBar>
+      </children>
+   </HBox>
 
 
     <TableView fx:id="table" prefHeight="229.0" prefWidth="526.0">
