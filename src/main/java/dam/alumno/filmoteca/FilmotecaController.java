@@ -12,6 +12,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
+import java.util.Comparator;
+
 
 public class FilmotecaController {
     @FXML
