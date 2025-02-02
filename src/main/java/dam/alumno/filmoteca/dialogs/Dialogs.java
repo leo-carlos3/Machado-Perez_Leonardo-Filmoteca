@@ -115,6 +115,7 @@ public class Dialogs {
         root.setAlignment(Pos.CENTER);
         Scene scene=new Scene(root, 400, 500);
         add.initModality(Modality.APPLICATION_MODAL);
+        add.setTitle("Añadir película");
         add.setScene(scene);
         add.show();
     }
@@ -195,6 +196,7 @@ public class Dialogs {
         root.setAlignment(Pos.CENTER);
         Scene scene=new Scene(root, 400, 600);
         edit.initModality(Modality.APPLICATION_MODAL);
+        edit.setTitle("Modificar película");
         edit.setScene(scene);
         edit.show();
     }
