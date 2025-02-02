@@ -5,7 +5,11 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
+<!--No conseguí que se cargara ninguna vista aparte de la mainView
+saltaba "javafx.fxml.LoadException", que curiosamente no salta si le daba un nombre de archivo incorrecto
+o inexistente. En fin, que me he pasado media tarde intentando resolver eso y al final he creado las ventanas
+usando la clase Dialogs
+-->
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="dam.alumno.filmoteca.FilmotecaController"

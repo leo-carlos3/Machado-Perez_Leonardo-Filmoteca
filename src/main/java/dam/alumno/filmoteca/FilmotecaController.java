@@ -46,6 +46,7 @@ public class FilmotecaController {
                     }
                 }
         );
+        //configura la búsqueda
         searchConfig();
 
 
