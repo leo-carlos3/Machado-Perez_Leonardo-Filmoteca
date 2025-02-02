@@ -1,5 +1,5 @@
-Alumno: Leonardo Machado Pérez./n
-Asignatura: Desarrollo de Interfaces./n
+Alumno: Leonardo Machado Pérez.
+Asignatura: Desarrollo de Interfaces.
 Centro: CIFP Carlos III.
 
 
